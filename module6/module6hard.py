@@ -20,14 +20,10 @@ class Figure:
             self.__color = [r, g, b]
 
     def __is_valid_sides(self, *sides) -> bool:
-        count = 0;
-        for side in sides:
-            if side < 0:
-                return False
-            count += 1
-        if count != self.sides_count:
+        if any(side <= 0 for side in sides):
             return False
-        return True
+
+        return len(sides) == self.sides_count
     
     def get_sides(self) -> list:
         return self.__sides
@@ -36,7 +32,7 @@ class Figure:
         area = 0
         for side in self.__sides:
             area += side
-        return side
+        return area
     
     def set_sides(self, *new_sides) -> None:
         if self.__is_valid_sides(*new_sides):
@@ -57,7 +53,7 @@ class Triangle(Figure):
     sides_count = 3
     def get_square(self) -> float:
         p = len(self) / 2
-        result = 0
+        result = 1
         for side in self.__sides:
             result *= p - side
         return math.sqrt(p * result)
