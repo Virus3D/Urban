@@ -1,6 +1,6 @@
 class WordsFinder():
     def __init__(self, *file) -> None:
-        self.file_names = list(file)
+        self.file_names = file
 
     def get_all_words(self) -> dict:
         all_words = {}
@@ -31,7 +31,7 @@ class WordsFinder():
         all_words = self.get_all_words()
         for file_name, words in all_words.items():
             if word in words:
-                result[file_name] = len(list(filter(lambda x: word in x, words)))
+                result[file_name] = words.count(word)
         return result
 
 
