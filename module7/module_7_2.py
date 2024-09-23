@@ -1,4 +1,4 @@
-def custom_write(file_name: str, strings:list) -> tuple:
+def custom_write(file_name: str, strings:list) -> dict:
     strings_positions = {}
     file = open(file_name, 'w', encoding='utf-8')
     for index, line in enumerate(strings):
