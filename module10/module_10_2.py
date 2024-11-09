@@ -1,4 +1,4 @@
-from time import sleep, time
+from time import sleep
 from threading import Thread
 
 class Knight(Thread):
