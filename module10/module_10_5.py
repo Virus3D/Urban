@@ -1,5 +1,5 @@
 from time import sleep, time
-from multiprocessing import Process
+from multiprocessing import Pool
 
 def read_info(name: str) -> None:
     all_data = []
@@ -18,15 +18,9 @@ if __name__ == '__main__':
     end = time()
     print(end - start, '(линейно)')
 
-    processes = []
     start = time()
-    for name in filenames:
-        process = Process(target=read_info, args=(name,))
-        process.start()
-        processes.append(process)
-
-    for process in processes:
-        process.join()
+    with Pool() as pool:
+        results = pool.map(read_info, filenames)
 
     end = time()
-    print(end - start, '(многопроцессный)')
+    print(end - start, '(многопроцессорный)')
