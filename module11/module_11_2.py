@@ -15,6 +15,8 @@ def introspection_info(obj):
     if hasattr(obj, '__module__'):
         obj_module = obj.__module__
 
+    obj_module2 = inspect.getmodule(obj)
+
     # Собираем информацию о интересных свойствах
     interesting_properties = {}
 
@@ -39,6 +41,7 @@ def introspection_info(obj):
         'attributes': attributes,
         'methods': methods,
         'module': obj_module,
+        'module2': obj_module2,
         'interesting_properties': interesting_properties,
     }
 
@@ -46,5 +49,6 @@ def introspection_info(obj):
     return info
 
 
-number_info = introspection_info(42)
-print(number_info)
+if __name__ == '__main__':
+    number_info = introspection_info(42)
+    print(number_info)
