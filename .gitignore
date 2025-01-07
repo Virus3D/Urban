@@ -1,4 +1,5 @@
 /doc
 **/__pycache__/
 /.venv
+.env
 /module11/img/*
